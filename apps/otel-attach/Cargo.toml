@@ -1,0 +1,16 @@
+[package]
+name = "otel-attach"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Attaches to a running program over ZeroMQ and writes its OpenTelemetry log records to stdout"
+
+[dependencies]
+otel-attach-protocol.workspace = true
+opentelemetry-proto = { version = "0.33.1", default-features = false, features = ["gen-tonic-messages", "logs", "with-serde"] }
+prost = "0.14.5"
+bytes = "1"
+clap = { version = "4", features = ["derive", "env"] }
+serde_json.workspace = true
+tokio = { version = "1", features = ["rt", "time", "macros", "signal", "net"] }
+zeromq = { version = "0.7.0", default-features = false, features = ["tokio-runtime", "tcp-transport"] }

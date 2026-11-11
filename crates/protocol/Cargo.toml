@@ -1,0 +1,10 @@
+[package]
+name = "otel-attach-protocol"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "The attach protocol: messages, filters, severities and the discovery file"
+
+[dependencies]
+serde.workspace = true
+serde_json.workspace = true
