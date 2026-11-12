@@ -1,0 +1,14 @@
+[package]
+name = "otel-attach-client"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "The attacher's side of the attach protocol: find, attach, follow new copies, report events"
+
+[dependencies]
+otel-attach-protocol.workspace = true
+opentelemetry-proto = { version = "0.33.1", default-features = false, features = ["gen-tonic-messages", "logs"] }
+prost = "0.14.5"
+bytes = "1"
+tokio = { version = "1", features = ["rt", "time", "macros", "net", "sync"] }
+zeromq = { version = "0.7.0", default-features = false, features = ["tokio-runtime", "tcp-transport"] }

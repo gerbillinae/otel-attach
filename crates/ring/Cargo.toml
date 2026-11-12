@@ -1,0 +1,8 @@
+[package]
+name = "otel-attach-ring"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "A ring buffer of log records, numbered by line, queried by line or time"
+
+[dependencies]

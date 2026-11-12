@@ -1,12 +1,12 @@
 # Attacher Specification
 
-The `otel-attach` program. Code: `apps/otel-attach`.
+`otel-attach watch`: attach to one program and print its records. Code: `apps/otel-attach/src/watch.rs`, with the attaching itself in `crates/client`, which the service shares.
 
 ## Requirements
 
 ### Requirement: Finding the program
 
-`otel-attach --dir <dir>` (or `OTEL_ATTACH_DIR`) SHALL read `attach.json` from the program's directory. `--endpoint` and `--token` name one directly. While no program is found, it SHALL say so once and keep looking every 500 ms.
+`otel-attach watch --dir <dir>` (or `OTEL_ATTACH_DIR`) SHALL read `attach.json` from the program's directory. `--endpoint` and `--token` name one directly. While no program is found, it SHALL say so once and keep looking every 500 ms.
 
 ### Requirement: What it asks for
 

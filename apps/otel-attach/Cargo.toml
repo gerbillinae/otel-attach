@@ -3,14 +3,27 @@ name = "otel-attach"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
-description = "Attaches to a running program over ZeroMQ and writes its OpenTelemetry log records to stdout"
+description = "Watch running programs' OpenTelemetry logs: attach to one, or serve ring buffers of them to an agent over MCP"
 
 [dependencies]
 otel-attach-protocol.workspace = true
+otel-attach-ring.workspace = true
+otel-attach-client.workspace = true
 opentelemetry-proto = { version = "0.33.1", default-features = false, features = ["gen-tonic-messages", "logs", "with-serde"] }
-prost = "0.14.5"
-bytes = "1"
 clap = { version = "4", features = ["derive", "env"] }
+serde = { workspace = true }
 serde_json.workspace = true
-tokio = { version = "1", features = ["rt", "time", "macros", "signal", "net"] }
-zeromq = { version = "0.7.0", default-features = false, features = ["tokio-runtime", "tcp-transport"] }
+tokio = { version = "1", features = ["rt-multi-thread", "time", "macros", "signal", "net", "sync"] }
+tokio-util = "0.7"
+rmcp = { version = "3.9.0", features = ["server", "transport-streamable-http-server", "macros", "schemars"] }
+axum = "0.8.9"
+schemars = "1.2.3"
+humantime = "2"
+getrandom = "0.3"
+
+[dev-dependencies]
+otel-attach-watched = { path = "../../crates/watched" }
+rmcp = { version = "3.9.0", features = ["client", "transport-streamable-http-client-reqwest"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", default-features = false, features = ["registry", "std"] }
+tokio-util = "0.7"
